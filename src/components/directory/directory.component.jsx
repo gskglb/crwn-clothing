@@ -21,7 +21,7 @@ class Directory extends Component {
                 },
                 {
                     id : 3,
-                    title : 'Sneckers',
+                    title : 'Sneackers',
                     imageURL: 'https://i.ibb.co/0jqHpnp/sneakers.png'
                 },
                 {
