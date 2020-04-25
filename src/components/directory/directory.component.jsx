@@ -11,24 +11,32 @@ class Directory extends Component {
             sections : [
                 {
                     id : 1,
-                    title : 'Hats'
+                    title : 'Hats',
+                    imageURL: 'https://i.ibb.co/cvpntL1/hats.png'
                 },
                 {
                     id : 2,
-                    title : 'Jackets'
+                    title : 'Jackets',
+                    imageURL: 'https://i.ibb.co/px2tCc3/jackets.png'
                 },
                 {
                     id : 3,
-                    title : 'Sneckers'
+                    title : 'Sneckers',
+                    imageURL: 'https://i.ibb.co/0jqHpnp/sneakers.png'
                 },
                 {
                     id : 4,
-                    title : 'Women'
+                    title : 'Women',
+                    imageURL: 'https://i.ibb.co/GCCdy8t/womens.png',
+                    size: 'large'
                 },
                 {
-                    id : 7,
-                    title : 'Men'
-                }                                                                
+                    id : 5,
+                    title : 'Men',
+                    imageURL: 'https://i.ibb.co/R70vBrQ/men.png',
+                    size: 'large'
+                },
+                                                               
             ]            
         }
     }
@@ -37,14 +45,8 @@ class Directory extends Component {
         return(
             <div className="directory-menu">
                 {
-                    this.state.sections.map( ({id, title}) => (
-                        <MenuItem key={id} title={title} />
-                        // <div key={id} className="menu-item">
-                        //     <div className="content">
-                        //         <h1 className="title">{title}</h1>
-                        //         <span className="subtitle">Shop Now</span>
-                        //     </div>
-                        // </div>
+                    this.state.sections.map( ({id, title, imageURL, size}) => (
+                        <MenuItem key={id} title={title} imageURL={imageURL} size={size}/>
                     ))
                 }
             </div>
