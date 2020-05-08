@@ -5,15 +5,27 @@ import { toggleCartHidden }  from '../../redux/cart/cart.actions';
 
 import './cart-icon.styles.scss';
 
-const CartIcon = ({toggleCartHidden}) => (
+
+const getCartItemsCount = (cartItems) => {
+    let counter = 0
+    cartItems.map((item) => counter = counter + item.quantity)
+    return counter
+}
+
+const CartIcon = ({toggleCartHidden, cartItemsCount}) => (
     <div className='cart-icon' onClick={toggleCartHidden}>
         <ShoppingCart className='shopping-icon' />
-        <span className='item-count'>0</span>
+        <span className='item-count'>{cartItemsCount}</span>
     </div>
 )
+
+const mapStateToProps = ((state)=>({
+    cartItemsCount: getCartItemsCount(state.cart.cartItems)
+    }
+))
 
 const mapDispatchToProps = (dispatch) => ({
     toggleCartHidden: () => dispatch(toggleCartHidden())
 }) 
 
-export default connect(null,mapDispatchToProps)(CartIcon);
+export default connect(mapStateToProps,mapDispatchToProps)(CartIcon);
