@@ -3,10 +3,11 @@ import React from 'react';
 import  './cart-item.styles.scss';
 
 const CartItem = ({cartItem : { imageUrl, name, price, quantity }}) => (
-    <div>
+    <div className='cart-item'>
         <img src={imageUrl} alt='item'/>
-        <div>
-            {name} - {price}
+        <div className='item-details'> 
+            <span className='name'>{name}</span>
+            <span className='price'>{quantity} * ${price}</span>
         </div>
     </div>
 )
