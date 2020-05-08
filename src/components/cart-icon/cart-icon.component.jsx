@@ -8,6 +8,7 @@ import './cart-icon.styles.scss';
 
 const getCartItemsCount = (cartItems) => {
     let counter = 0
+    console.log('calling compute')
     cartItems.map((item) => counter = counter + item.quantity)
     return counter
 }
