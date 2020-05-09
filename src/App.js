@@ -7,6 +7,7 @@ import Header from './components/header/header.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.util';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors'
 
 import './App.css';
 
@@ -58,8 +59,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser:  user.currentUser
+const mapStateToProps = (state) => ({
+  currentUser:  selectCurrentUser(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
