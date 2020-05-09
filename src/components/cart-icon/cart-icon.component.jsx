@@ -1,28 +1,11 @@
 import React from 'react';
 import { ReactComponent as ShoppingCart } from '../../assets/shopping-bag.svg';
 import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { toggleCartHidden }  from '../../redux/cart/cart.actions';
 
+import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
+
 import './cart-icon.styles.scss';
-
-const getCartItems = state => state.cart.cartItems
-const getCartItemsCount = createSelector(
-    [getCartItems],
-    (cartItems)=>{
-        let counter = 0
-        console.log('calling compute')
-        cartItems.map((item) => counter = counter + item.quantity)
-        return counter
-    }
-)
-
-// const getCartItemsCount = (cartItems) => {
-//     let counter = 0
-//     console.log('calling compute')
-//     cartItems.map((item) => counter = counter + item.quantity)
-//     return counter
-// }
 
 const CartIcon = ({toggleCartHidden, cartItemsCount}) => (
     <div className='cart-icon' onClick={toggleCartHidden}>
@@ -32,7 +15,7 @@ const CartIcon = ({toggleCartHidden, cartItemsCount}) => (
 )
 
 const mapStateToProps = ((state)=>({
-    cartItemsCount: getCartItemsCount(state)
+    cartItemsCount: selectCartItemsCount(state)
     }
 ))
 
